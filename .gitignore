@@ -1,0 +1,34 @@
+# Private: constitution, notes, article drafts — never published
+CLAUDE.md
+docs/
+articles/
+
+# Secrets & local config
+.env
+*.env
+
+# Run artifacts (traces committed only as golden fixtures under datasets/)
+runs/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+
+# Tooling caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
