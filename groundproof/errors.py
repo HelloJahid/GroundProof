@@ -11,3 +11,7 @@ from agentproof import AgentProofError
 
 class GroundProofError(AgentProofError):
     """Base class for every error GroundProof raises."""
+
+
+class FetchFailure(GroundProofError):
+    """A live corpus fetch failed: network error, bad HTTP status, or malformed payload."""
