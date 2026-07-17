@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "groundproof"
+version = "0.1.0"
+description = "RAG that knows when facts expire — and pays only for the context it needs."
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+    "agentproof @ git+https://github.com/HelloJahid/AgentProof.git",
+    "pydantic>=2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff",
+    "pytest",
+]
+
+[tool.setuptools.packages.find]
+include = ["groundproof*"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
