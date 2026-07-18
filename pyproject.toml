@@ -10,6 +10,7 @@ requires-python = ">=3.11"
 license = { text = "MIT" }
 dependencies = [
     "agentproof @ git+https://github.com/HelloJahid/AgentProof.git",
+    "chromadb>=0.5",
     "pydantic>=2",
 ]
 
