@@ -99,6 +99,41 @@ class TestContract:
         hits = store.query(EMBEDDER.embed_texts(["new text here"])[0], top_k=1)
         assert hits[0].chunk.text == "new text here"
 
+    def test_as_of_hides_chunks_from_the_future(self, store):
+        index_texts(
+            store,
+            [
+                make_chunk(
+                    "python-whatsnew-3.12:0000", "same text", observed_at=date(2023, 10, 2)
+                ),
+                make_chunk(
+                    "python-whatsnew-3.13:0000", "same text", observed_at=date(2024, 10, 7)
+                ),
+            ],
+        )
+        hits = store.query(EMBEDDER.embed_texts(["same text"])[0], top_k=5, as_of=date(2024, 6, 1))
+        assert [hit.chunk.chunk_id for hit in hits] == ["python-whatsnew-3.12:0000"]
+
+    def test_as_of_boundary_is_inclusive(self, store):
+        index_texts(
+            store,
+            [make_chunk("python-whatsnew-3.12:0000", "boundary", observed_at=date(2023, 10, 2))],
+        )
+        hits = store.query(
+            EMBEDDER.embed_texts(["boundary"])[0], top_k=5, as_of=date(2023, 10, 2)
+        )
+        assert len(hits) == 1
+
+    def test_no_as_of_sees_everything(self, store):
+        index_texts(
+            store,
+            [
+                make_chunk("python-whatsnew-3.12:0000", "one", observed_at=date(2023, 10, 2)),
+                make_chunk("python-whatsnew-3.13:0000", "two", observed_at=date(2024, 10, 7)),
+            ],
+        )
+        assert len(store.query(EMBEDDER.embed_texts(["one two"])[0], top_k=5)) == 2
+
     def test_temporal_metadata_round_trips(self, store):
         index_texts(
             store,

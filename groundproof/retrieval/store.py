@@ -9,6 +9,7 @@ Every indexed chunk keeps its temporal metadata, so P2's as-of filtering is a
 query-time concern, not a re-indexing one.
 """
 
+from datetime import date
 from typing import Protocol, runtime_checkable
 
 from pydantic import BaseModel, ConfigDict
@@ -34,8 +35,15 @@ class VectorStore(Protocol):
         """Add (or overwrite, by chunk_id) each chunk with its vector."""
         ...
 
-    def query(self, vector: list[float], top_k: int = 5) -> list[ScoredChunk]:
-        """Return up to ``top_k`` chunks, best score first."""
+    def query(
+        self, vector: list[float], top_k: int = 5, as_of: date | None = None
+    ) -> list[ScoredChunk]:
+        """Return up to ``top_k`` chunks, best score first.
+
+        With ``as_of`` set, chunks observed after that date are invisible.
+        The filter runs INSIDE the store — filtering after top-k would let
+        future chunks crowd valid ones out of the result window.
+        """
         ...
 
     def count(self) -> int:
@@ -58,10 +66,13 @@ class InMemoryVectorStore:
         for chunk, vector in zip(chunks, vectors, strict=True):
             self._entries[chunk.chunk_id] = (chunk, vector)
 
-    def query(self, vector: list[float], top_k: int = 5) -> list[ScoredChunk]:
+    def query(
+        self, vector: list[float], top_k: int = 5, as_of: date | None = None
+    ) -> list[ScoredChunk]:
         scored = [
             ScoredChunk(chunk=chunk, score=cosine_similarity(vector, stored_vector))
             for chunk, stored_vector in self._entries.values()
+            if as_of is None or chunk.observed_at <= as_of
         ]
         scored.sort(key=lambda hit: (-hit.score, hit.chunk.chunk_id))
         return scored[:top_k]

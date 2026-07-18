@@ -52,13 +52,19 @@ class ChromaVectorStore:
             metadatas=[_to_metadata(chunk) for chunk in chunks],
         )
 
-    def query(self, vector: list[float], top_k: int = 5) -> list[ScoredChunk]:
+    def query(
+        self, vector: list[float], top_k: int = 5, as_of: date | None = None
+    ) -> list[ScoredChunk]:
         n_results = min(top_k, self.count())
         if n_results == 0:
             return []
+        # The ordinal stored at index time (P1) is what makes this range filter
+        # possible: Chroma's $lte compares numbers, not ISO strings.
+        where = {"observed_at_ord": {"$lte": as_of.toordinal()}} if as_of is not None else None
         result = self._collection.query(
             query_embeddings=[vector],
             n_results=n_results,
+            where=where,
             include=["documents", "metadatas", "distances"],
         )
         return [

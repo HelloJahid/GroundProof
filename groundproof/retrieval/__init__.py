@@ -12,13 +12,31 @@ from groundproof.retrieval.embeddings import (
 )
 from groundproof.retrieval.indexing import index_documents
 from groundproof.retrieval.store import InMemoryVectorStore, ScoredChunk, VectorStore
+from groundproof.retrieval.supersedence import (
+    ResolvedEvidence,
+    SupersededRecord,
+    resolve_supersedence,
+    topic_key,
+)
+from groundproof.retrieval.temporal import (
+    RankedChunk,
+    TemporalRetriever,
+    recency_score,
+)
 
 __all__ = [
     "EmbeddingClient",
     "InMemoryVectorStore",
     "MockEmbeddingClient",
+    "RankedChunk",
+    "ResolvedEvidence",
     "ScoredChunk",
+    "SupersededRecord",
+    "TemporalRetriever",
     "VectorStore",
     "cosine_similarity",
     "index_documents",
+    "recency_score",
+    "resolve_supersedence",
+    "topic_key",
 ]
