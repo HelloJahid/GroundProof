@@ -1,0 +1,5 @@
+{"case_id": "latest-2024-06", "pair_id": "latest-version", "question": "summary release highlights latest stable python", "as_of": "2024-06-01", "expected_doc_id": "python-whatsnew-3.12", "expected_phrases": ["3.12"]}
+{"case_id": "latest-2026-01", "pair_id": "latest-version", "question": "summary release highlights latest stable python", "as_of": "2026-01-01", "expected_doc_id": "python-whatsnew-3.14", "expected_phrases": ["3.14"]}
+{"case_id": "distutils-2022-06", "pair_id": "distutils", "question": "is the distutils package removed", "as_of": "2022-06-01", "expected_doc_id": "python-whatsnew-3.10", "expected_phrases": ["distutils"]}
+{"case_id": "distutils-2024-06", "pair_id": "distutils", "question": "is the distutils package removed", "as_of": "2024-06-01", "expected_doc_id": "python-whatsnew-3.12", "expected_phrases": ["distutils"]}
+{"case_id": "zoneinfo-2021-06", "pair_id": null, "question": "when was the zoneinfo module added", "as_of": "2021-06-01", "expected_doc_id": "python-whatsnew-3.9", "expected_phrases": ["zoneinfo"]}

@@ -23,3 +23,6 @@ jobs:
 
       - name: Tests
         run: pytest
+
+      - name: Eval gate
+        run: python -m groundproof.evals
