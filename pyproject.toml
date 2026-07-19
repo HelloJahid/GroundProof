@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -8,10 +8,23 @@ version = "0.1.0"
 description = "RAG that knows when facts expire — and pays only for the context it needs."
 readme = "README.md"
 requires-python = ">=3.11"
-license = { text = "MIT" }
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Jahid Hasan", email = "jahid2rmit@gmail.com" }]
+keywords = ["rag", "temporal", "retrieval", "context-compression", "agents", "evals"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Typing :: Typed",
+]
 dependencies = [
-    "agentproof @ git+https://github.com/HelloJahid/AgentProof.git",
+    "agentproof @ git+https://github.com/HelloJahid/AgentProof.git@eaf9866fd96f69f6d0980419a3dc038fd72b0332",
     "chromadb>=0.5",
+    "httpx>=0.27",
     "pydantic>=2",
 ]
 
@@ -21,8 +34,18 @@ dev = [
     "pytest",
 ]
 
+[project.urls]
+Repository = "https://github.com/HelloJahid/GroundProof"
+Issues = "https://github.com/HelloJahid/GroundProof/issues"
+Changelog = "https://github.com/HelloJahid/GroundProof/blob/main/CHANGELOG.md"
+"AgentProof (stage 2)" = "https://github.com/HelloJahid/AgentProof"
+"PromptProof (stage 1)" = "https://github.com/HelloJahid/PromptProof"
+
 [tool.setuptools.packages.find]
 include = ["groundproof*"]
+
+[tool.setuptools.package-data]
+groundproof = ["py.typed"]
 
 [tool.ruff]
 target-version = "py311"
