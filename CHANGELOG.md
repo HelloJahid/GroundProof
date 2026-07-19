@@ -3,6 +3,14 @@
 All notable changes to GroundProof are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versioning: [SemVer](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+- Streamlit demo app (`streamlit run demo/app.py`): Ask / Time travel / A/B compression
+  tabs with the evidence pipeline visible — offline by default, sidebar Live toggle
+  using `.env` keys.
+
 ## [0.1.0] - 2026-07-19
 
 First public release — the complete stage-3 build.

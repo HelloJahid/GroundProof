@@ -33,6 +33,9 @@ dev = [
     "ruff",
     "pytest",
 ]
+demo = [
+    "streamlit>=1.37",
+]
 
 [project.urls]
 Repository = "https://github.com/HelloJahid/GroundProof"

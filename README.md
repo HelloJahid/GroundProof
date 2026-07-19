@@ -102,6 +102,19 @@ fstring-changes                 2105 -> 613       71%        1.00 -> 1.00
 mean savings: 62%   retention: intact
 ```
 
+## Interactive demo
+
+A Streamlit app puts the whole pipeline on screen — trajectory, dated evidence, grade signals, compression receipts, and the answer:
+
+```bash
+pip install -e ".[demo]"
+streamlit run demo/app.py
+```
+
+Three tabs: **Ask** (one question → the full pipeline story), **Time travel** (the same question at two as-of moments, side by side), and **A/B compression** (the token receipts). Keyless by default; the sidebar **Live** toggle switches to the real model + web search using keys from `.env`.
+
+![GroundProof demo](assets/demo-screenshot.png)
+
 ## Live mode
 
 `--live` swaps the offline extractive synthesizer for the real model and web fallback through the same ports — put keys in `.env`:
@@ -127,7 +140,7 @@ groundproof/
   steps/        # the pipeline as AgentProof Steps + the corrective router
   evals/        # temporal golden pairs, A/B harness, CI gate (python -m groundproof.evals)
   cockpit.py    # GroundProof-aware trace viewer
-demo/           # the ask CLI (offline by default, --live for real model + search)
+demo/           # the ask CLI + Streamlit app (offline by default, live via .env keys)
 corpus/         # committed CPython changelog corpus (Python 3.8-3.14, dated)
 datasets/       # golden eval cases (JSONL)
 tests/          # full offline suite — no keys, no network, ever
