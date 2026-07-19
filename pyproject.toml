@@ -6,6 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "groundproof"
 version = "0.1.0"
 description = "RAG that knows when facts expire — and pays only for the context it needs."
+readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
 dependencies = [
