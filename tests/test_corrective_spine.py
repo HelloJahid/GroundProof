@@ -113,7 +113,7 @@ class TestStrongEvidencePath:
         )
         state = machine.run(GroundState(query="is the distutils package removed"))
 
-        assert trajectory(state) == ["route", "retrieve", "grade", "synthesize"]
+        assert trajectory(state) == ["route", "retrieve", "grade", "compress", "synthesize"]
         assert state.grade is not None and state.grade.verdict == "strong"
         assert state.final_answer is not None and "2023-10-02" in state.final_answer
         assert state.input_tokens == 120 and state.output_tokens == 25

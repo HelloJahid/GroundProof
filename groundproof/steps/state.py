@@ -13,6 +13,7 @@ from typing import Literal
 from agentproof import AgentState
 from pydantic import Field
 
+from groundproof.compress.pruner import CompressedEvidence
 from groundproof.grading.grader import EvidenceGrade
 from groundproof.retrieval.supersedence import SupersededRecord
 from groundproof.retrieval.temporal import RankedChunk
@@ -33,6 +34,7 @@ class GroundState(AgentState):
     grade: EvidenceGrade | None = None
     retrieval_attempts: int = 0
     web_evidence: str | None = None
+    compressed: CompressedEvidence | None = None
 
     @property
     def effective_query(self) -> str:

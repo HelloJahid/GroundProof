@@ -1,0 +1,4 @@
+{"case_id": "distutils-removed", "question": "is the distutils package removed", "as_of": "2024-06-01", "required_phrases": ["distutils"]}
+{"case_id": "zoneinfo-added", "question": "when was the zoneinfo module added", "as_of": "2021-06-01", "required_phrases": ["zoneinfo"]}
+{"case_id": "pattern-matching", "question": "what is structural pattern matching in python", "as_of": "2022-06-01", "required_phrases": ["pattern matching"]}
+{"case_id": "fstring-changes", "question": "what changed about f-strings in python", "as_of": "2024-06-01", "required_phrases": ["f-string"]}

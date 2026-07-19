@@ -1,5 +1,6 @@
 """Pipeline stages as AgentProof Steps, plus the adaptive router (P3)."""
 
+from groundproof.steps.compress import CompressStep
 from groundproof.steps.grade import GradeStep
 from groundproof.steps.pipeline import build_pipeline, corrective_router
 from groundproof.steps.reformulate import ANCHOR_TERMS, ReformulateStep
@@ -20,6 +21,7 @@ __all__ = [
     "HONEST_FAILURE",
     "INSTRUCTIONS",
     "AdaptiveRouterStep",
+    "CompressStep",
     "GradeStep",
     "GroundState",
     "ReformulateStep",

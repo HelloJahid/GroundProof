@@ -33,10 +33,13 @@ HONEST_FAILURE = (
 def _evidence_prompt(state: GroundState) -> str:
     as_of = state.as_of.isoformat() if state.as_of else "latest available knowledge"
     lines = [f"Question (answer as of {as_of}): {state.query}", "", "Evidence (dated):"]
-    lines.extend(
-        f"[{index}] ({item.chunk.observed_at}, {item.chunk.doc_id}) {item.chunk.text}"
-        for index, item in enumerate(state.evidence, start=1)
-    )
+    if state.compressed is not None:
+        lines.append(state.compressed.text)
+    else:
+        lines.extend(
+            f"[{index}] ({item.chunk.observed_at}, {item.chunk.doc_id}) {item.chunk.text}"
+            for index, item in enumerate(state.evidence, start=1)
+        )
     if state.evidence_history:
         lines.append("")
         lines.append("Superseded history (each item was true until the date shown):")
