@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="420" viewBox="0 0 800 420" font-family="Georgia, serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#101820"/>
+      <stop offset="1" stop-color="#1e3244"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="420" fill="url(#bg)"/>
+  <text x="60" y="120" fill="#e8ecf1" font-size="40" font-weight="bold">RAG That Knows When</text>
+  <text x="60" y="170" fill="#e8ecf1" font-size="40" font-weight="bold">Facts Expire</text>
+  <text x="60" y="215" fill="#8ab4d8" font-size="20" font-style="italic">— and pays only for the context it needs</text>
+  <line x1="60" y1="300" x2="740" y2="300" stroke="#3d566e" stroke-width="3"/>
+  <g font-family="Consolas, monospace" font-size="14" text-anchor="middle">
+    <circle cx="140" cy="300" r="9" fill="#5a7d9a"/>
+    <text x="140" y="330" fill="#5a7d9a">2020 · 3.9</text>
+    <circle cx="300" cy="300" r="9" fill="#7da7c9"/>
+    <text x="300" y="330" fill="#7da7c9">2022 · 3.11</text>
+    <circle cx="460" cy="300" r="10" fill="#a7cbe8"/>
+    <text x="460" y="330" fill="#a7cbe8">2023 · 3.12</text>
+    <line x1="440" y1="280" x2="480" y2="320" stroke="#f14c4c" stroke-width="3"/>
+    <text x="460" y="270" fill="#f14c4c" font-size="12">superseded</text>
+    <circle cx="620" cy="300" r="12" fill="#4ec9b0"/>
+    <text x="620" y="330" fill="#4ec9b0">2025 · 3.14 ✓</text>
+  </g>
+  <text x="60" y="390" fill="#6e8aa3" font-size="15" font-family="Consolas, monospace">GroundProof · Proof series, stage 3 · every claim is a command</text>
+</svg>

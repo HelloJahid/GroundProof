@@ -7,6 +7,8 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
+![GroundProof — RAG that knows when facts expire](assets/hero.svg)
+
 GroundProof is an **agentic corrective RAG** system with two hooks most RAG tutorials skip, both *proven* by an eval harness rather than asserted:
 
 - **Time-aware retrieval** — every chunk carries `observed_at`; every query runs *as of* a moment (`--as-of 2024-06` vs today); conflicting facts are resolved by deterministic supersedence rules (later date wins, older kept as dated history); answers must carry dated citations.
