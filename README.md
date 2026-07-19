@@ -3,6 +3,9 @@
 > **RAG that knows when facts expire — and pays only for the context it needs.**
 
 [![CI](https://github.com/HelloJahid/GroundProof/actions/workflows/ci.yaml/badge.svg)](https://github.com/HelloJahid/GroundProof/actions/workflows/ci.yaml)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
 GroundProof is an **agentic corrective RAG** system with two hooks most RAG tutorials skip, both *proven* by an eval harness rather than asserted:
 
@@ -41,10 +44,11 @@ Python 3.11+. Fully offline by default — no API keys, no network (the corpus i
 git clone https://github.com/HelloJahid/GroundProof.git
 cd GroundProof
 python -m venv .venv
-.venv/Scripts/pip install -e ".[dev]"        # Linux/macOS: .venv/bin/pip
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+pip install -e ".[dev]"
 
-.venv/Scripts/pytest                          # 134 tests, fully mocked
-.venv/Scripts/python -m groundproof.evals     # the eval gate: golden pairs + A/B receipts
+pytest                           # full suite, fully mocked — no keys, no network
+python -m groundproof.evals      # the eval gate: golden pairs + A/B receipts
 ```
 
 ## The three demo moments
@@ -126,7 +130,7 @@ groundproof/
 demo/           # the ask CLI (offline by default, --live for real model + search)
 corpus/         # committed CPython changelog corpus (Python 3.8-3.14, dated)
 datasets/       # golden eval cases (JSONL)
-tests/          # 134 tests — no keys, no network, ever
+tests/          # full offline suite — no keys, no network, ever
 ```
 
 ## Design rules
@@ -136,4 +140,10 @@ tests/          # 134 tests — no keys, no network, ever
 - If it isn't in the trace, it didn't happen: every run is recorded; evals judge traces, never live processes.
 - No agent/RAG frameworks — the runtime is [AgentProof](https://github.com/HelloJahid/AgentProof); peripherals are `chromadb` and `httpx`.
 
-MIT license.
+## Contributing
+
+Issues and small PRs are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md) for the dev setup and the three checks every change must pass.
+
+## License
+
+[MIT](LICENSE)
